@@ -1,5 +1,11 @@
+import BestSellerProducts from "../Components/Sections/BestSellerProducts";
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <main>
+      <BestSellerProducts />
+    </main>
+  );
 };
 
 export default Home;

@@ -1,62 +1,85 @@
 import Headroom from "react-headroom";
-import { HiBars3 } from "react-icons/hi2";
-import { Link } from "react-router-dom";
+import { PiShoppingCartThin } from "react-icons/pi";
+import { Link, useLocation } from "react-router-dom";
 import NavItem from "../Shared/NavItem";
+import NavbarEnd from "../Shared/NavbarEnd";
 import SectionWrapper from "../Shared/SectionWrapper";
-const Navbar = () => {
+
+function Navbar() {
+  const { pathname } = useLocation();
+
   const items = (
     <>
-      <NavItem path="/" name="Home" />
+      <NavItem path="/">Home</NavItem>
+      <NavItem path="/products">products</NavItem>
     </>
   );
+
   return (
-    <Headroom style={{ zIndex: 200 }}>
-      <SectionWrapper>
-        <div className="navbar bg-transparent px-0 items-center py-2 md:py-4">
-          <div className="navbar-start">
-            <div className="dropdown  lg:hidden">
-              <div className="drawer">
-                <input
-                  id="my-drawer"
-                  type="checkbox"
-                  className="drawer-toggle"
-                />
-                <div className="drawer-content">
-                  {/* Page content here */}
-                  <label htmlFor="my-drawer" className="drawer-button">
-                    <HiBars3 className="text-2xl md:text-3xl cursor-pointer" />
-                  </label>
-                </div>
-                <div className="drawer-side z-20">
-                  <label
-                    htmlFor="my-drawer"
-                    aria-label="close sidebar"
-                    className="drawer-overlay"
-                  ></label>
-                  <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content capitalize">
-                    {/* Sidebar content here */}
-                    {items}
-                  </ul>
-                </div>
+    <div
+      className={`bg-transparent  ${
+        pathname === "/" ? "md:absolute top-0 left-0 " : "shadow-lg"
+      }  z-10 w-full `}
+    >
+      <Headroom style={{ zIndex: 100 }}>
+        <SectionWrapper>
+          <div className={`navbar py-0 md:py-2  px-0 bg-transparent`}>
+            <div className="navbar-start">
+              <div className={`dropdown `}>
+                <label tabIndex={0} className="btn btn-ghost md:hidden">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 "
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h8m-8 6h16"
+                    />
+                  </svg>
+                </label>
+                <ul
+                  tabIndex={0}
+                  className={`menu menu-sm dropdown-content mt-3  z-50 shadow bg-base-100 rounded-md w-80 gap-1 p-6`}
+                >
+                  {items}
+                </ul>
               </div>
+              <Link
+                to="/"
+                className="btn btn-ghost normal-case text-xl p-0 hover:bg-transparent"
+              >
+                <img
+                  src="https://i.ibb.co/CvNgDBs/log.png"
+                  alt="Logo"
+                  className="w-40"
+                />
+              </Link>
             </div>
-            <Link className="btn btn-ghost text-xl">
-              <img
-                src="https://i.ibb.co/J3ZPW1h/logo.png"
-                alt="Mobile Hub"
-                className="max-w-[150px] w-full"
-              />
-            </Link>
+            <div className="navbar-center hidden md:flex">
+              <ul id="nav-menu" className="menu menu-horizontal px-1 gap-2">
+                {items}
+              </ul>
+            </div>
+            <div className="navbar-end">
+              <Link
+                to="/my-cart"
+                className="pr-4 md:pr-10 text-xl md:text-2xl text-title-color hover:text-secondary-color"
+              >
+                <PiShoppingCartThin />
+              </Link>
+
+              <NavbarEnd />
+            </div>
           </div>
-          <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 gap-1 capitalize">
-              {items}
-            </ul>
-          </div>
-          <div className="navbar-end"></div>
-        </div>
-      </SectionWrapper>
-    </Headroom>
+        </SectionWrapper>
+      </Headroom>
+    </div>
   );
-};
+}
+
 export default Navbar;

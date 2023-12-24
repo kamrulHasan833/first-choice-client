@@ -33,14 +33,14 @@
 
 .hero-swiper .swiper-pagination-bullet {
   transition: 0.4s ease-out;
-  background-color: #c21b5e;
+  background-color: #6e3eb8;
 }
 .hero-swiper .swiper-pagination-bullet-active {
-  background-color: #c21b5e;
+  background-color: #6e3eb8;
 }
 .hero-swiper .swiper-button-prev,
 .hero-swiper .swiper-button-next {
-  background: #c21b5e;
+  background: #6e3eb8;
   color: white;
   border-radius: 2px;
   width: 35px;
@@ -49,7 +49,7 @@
 }
 .hero-swiper .swiper-button-prev:hover,
 .hero-swiper .swiper-button-next:hover {
-  background: #a39700;
+  background: #c21b5e;
 }
 .hero-swiper .swiper-button-prev::after,
 .hero-swiper .swiper-button-next::after {
@@ -58,14 +58,13 @@
 .headroom--pinned {
   background-color: white;
   box-shadow: 1px 1px 8px 0 #e4e4e4;
-  z-index: 100;
 }
 
 /* back to top */
 
 .w-back-to-up svg circle:nth-child(2) {
   fill: white;
-  stroke: #c21b5e;
+  stroke: #6e3eb8;
 }
 
 @media screen and (min-width: 0) {
